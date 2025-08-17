@@ -1,16 +1,22 @@
-def longest_prefix(strings):
-    if not strings:
-        return ""
-    
-    prefix = strings[0]
-    
-    for string in strings[1:]:
-        while not string.startswith(prefix):
-            prefix = prefix[:-1]
-            if not prefix:
-                return ""
-    return prefix
-   
+class Solution:
 
-strings = ["flower", "flow", "float"]
-print("Longest common prefix:", longest_prefix(strings))
+    def twoSum(self,nums, target) -> list:
+        num_as_index = {}
+        for index, num in enumerate(nums):
+            compliment = target - num
+            if compliment in num_as_index:
+                return [num_as_index[compliment], index]
+            num_as_index[num] = index
+        return []
+
+
+def main():
+        soln = Solution()
+        twoSum = soln.twoSum
+        nums = [1, 2, 3, 4, 5]
+        target = 9
+        print(twoSum(nums, target))
+
+
+if __name__ == "__main__":
+        main()
